@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praktikum Cloud Computing | PaaS</title>
+  <style>
+    :root {
+      --navy: #14213d;
+      --blue: #2563eb;
+      --sky: #eaf2ff;
+      --ink: #1f2937;
+      --muted: #64748b;
+      --white: #ffffff;
+      --line: #e5eaf2;
+      --bg: #f5f7fb;
+      --green: #16845b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #14213d 0%, #1d4ed8 100%);
+      color: white;
+      padding: 24px 20px 64px;
+    }
+    .topbar, .container { max-width: 1080px; margin: 0 auto; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 750; letter-spacing: .2px; }
+    .brand-mark {
+      display: grid; place-items: center; width: 40px; height: 40px;
+      border-radius: 12px; background: rgba(255,255,255,.16); font-size: 20px;
+    }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    nav a { color: #eaf2ff; text-decoration: none; font-size: .94rem; }
+    nav a:hover { color: white; text-decoration: underline; }
+    .hero { max-width: 1080px; margin: 48px auto 0; }
+    .eyebrow {
+      display: inline-block; padding: 5px 12px; border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px; font-size: .8rem; letter-spacing: .7px; text-transform: uppercase;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.12; margin: 18px 0 14px; }
+    .hero p { max-width: 700px; color: #dbeafe; font-size: 1.05rem; margin: 0; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; }
+    .button {
+      display: inline-block; padding: 11px 17px; border-radius: 10px; text-decoration: none;
+      font-weight: 700; border: 1px solid transparent; cursor: pointer; font-size: .94rem;
+    }
+    .button-primary { background: white; color: var(--navy); }
+    .button-secondary { border-color: rgba(255,255,255,.45); color: white; background: transparent; }
+    main { margin-top: -32px; padding: 0 20px 56px; }
+    .container { display: grid; gap: 22px; }
+    .overview {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .stat, .card {
+      background: var(--white); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: 0 8px 28px rgba(15, 23, 42, .045);
+    }
+    .stat { padding: 21px; }
+    .stat-label { color: var(--muted); font-size: .87rem; }
+    .stat-value { font-size: 1.15rem; font-weight: 800; margin-top: 5px; }
+    .card { padding: 25px; }
+    .section-heading { display: flex; align-items: flex-start; gap: 13px; margin-bottom: 18px; }
+    .section-icon {
+      width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center;
+      border-radius: 13px; background: var(--sky); font-size: 22px;
+    }
+    h2 { margin: 0 0 5px; font-size: 1.35rem; color: var(--navy); }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .step { padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: #fbfdff; }
+    .step-number {
+      display: inline-grid; place-items: center; width: 30px; height: 30px;
+      border-radius: 9px; color: white; background: var(--blue); font-weight: 800; margin-bottom: 10px;
+    }
+    .step h3 { margin: 0 0 6px; font-size: 1rem; }
+    .step p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .member {
+      display: flex; align-items: center; gap: 13px; padding: 16px;
+      border: 1px solid var(--line); border-radius: 14px;
+    }
+    .avatar {
+      display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px;
+      border-radius: 50%; background: var(--sky); color: var(--blue); font-weight: 800;
+    }
+    .member strong { display: block; }
+    .member span { color: var(--muted); font-size: .88rem; }
+    .code-block {
+      position: relative; border-radius: 13px; overflow: hidden; background: #0f172a; color: #e2e8f0;
+    }
+    .code-header {
+      padding: 11px 15px; background: #1e293b; display: flex; justify-content: space-between;
+      align-items: center; gap: 10px; font-size: .88rem;
+    }
+    pre { margin: 0; padding: 19px; overflow-x: auto; font-size: .9rem; line-height: 1.65; }
+    .copy-btn {
+      background: #334155; color: white; border: 0; border-radius: 7px; padding: 6px 10px;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #475569; }
+    .note {
+      border-left: 4px solid var(--blue); background: var(--sky); border-radius: 0 12px 12px 0;
+      padding: 15px 17px; color: #1e3a8a;
+    }
+    .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 13px; }
+    .feature { padding: 15px; border: 1px solid var(--line); border-radius: 12px; }
+    .feature strong { display: block; margin-bottom: 4px; }
+    .feature p { color: var(--muted); margin: 0; font-size: .93rem; }
+    footer { text-align: center; color: var(--muted); padding: 22px 20px 35px; font-size: .9rem; }
+    @media (max-width: 720px) {
+      .overview, .steps, .team, .features { grid-template-columns: 1fr; }
+      header { padding-bottom: 54px; }
+      .hero { margin-top: 35px; }
+      .card { padding: 19px; }
+      nav { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand"><div class="brand-mark">☁</div><span>CloudLab · Praktikum</span></div>
+      <nav aria-label="Navigasi utama">
+        <a href="#tentang">Tentang PaaS</a>
+        <a href="#langkah">Langkah Praktikum</a>
+        <a href="#kelompok">Anggota Kelompok</a>
+      </nav>
+    </div>
+    <section class="hero">
+      <span class="eyebrow">Cloud Computing · PaaS</span>
+      <h1>Praktikum Cloud<br>Computing</h1>
+      <p>Mengenal Platform as a Service melalui deployment aplikasi web sederhana. Platform cloud membantu pengembang menjalankan aplikasi tanpa harus mengelola infrastruktur server secara langsung.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#langkah">Lihat Langkah Praktikum →</a>
+        <a class="button button-secondary" href="#kelompok">Kenali Kelompok</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="overview" aria-label="Ringkasan praktikum">
+        <div class="stat"><div class="stat-label">Model Layanan</div><div class="stat-value">Platform as a Service</div></div>
+        <div class="stat"><div class="stat-label">Platform Praktik</div><div class="stat-value">Render</div></div>
+        <div class="stat"><div class="stat-label">Output</div><div class="stat-value">Aplikasi Web Hello World</div></div>
+      </section>
+
+      <section class="card" id="tentang">
+        <div class="section-heading">
+          <div class="section-icon">☁️</div>
+          <div><h2>Apa itu PaaS?</h2><p>Platform untuk membangun, menjalankan, dan menerbitkan aplikasi.</p></div>
+        </div>
+        <p><strong>Platform as a Service (PaaS)</strong> adalah layanan cloud yang menyediakan lingkungan untuk mengembangkan dan menjalankan aplikasi. Pengguna berfokus pada kode aplikasi, sedangkan penyedia platform menangani banyak kebutuhan infrastruktur dan runtime.</p>
+        <div class="features">
+          <div class="feature"><strong>🚀 Deployment lebih praktis</strong><p>Aplikasi dapat diterbitkan melalui repository kode dan pengaturan build.</p></div>
+          <div class="feature"><strong>🛠️ Tidak mengelola server fisik</strong><p>Pengguna tidak perlu menyiapkan perangkat keras server sendiri.</p></div>
+          <div class="feature"><strong>🌐 Akses melalui URL</strong><p>Aplikasi yang berhasil diterbitkan dapat diakses melalui alamat web.</p></div>
+          <div class="feature"><strong>🔄 Pembaruan aplikasi</strong><p>Kode dapat diperbarui dan di-deploy kembali ketika diperlukan.</p></div>
+        </div>
+      </section>
+
+      <section class="card" id="langkah">
+        <div class="section-heading">
+          <div class="section-icon">🧪</div>
+          <div><h2>Langkah Praktikum</h2><p>Alur sederhana untuk menerbitkan aplikasi web menggunakan Render.</p></div>
+        </div>
+        <div class="steps">
+          <article class="step"><span class="step-number">1</span><h3>Buat repository</h3><p>Siapkan repository GitHub dan masukkan file aplikasi serta file dependensi.</p></article>
+          <article class="step"><span class="step-number">2</span><h3>Hubungkan Render</h3><p>Buat Web Service baru dan pilih repository yang berisi aplikasi.</p></article>
+          <article class="step"><span class="step-number">3</span><h3>Deploy & uji</h3><p>Tunggu deployment selesai, buka URL Render, lalu pastikan halaman dapat diakses.</p></article>
+        </div>
+        <div class="note" style="margin-top:18px"><strong>Catatan:</strong> Render merupakan platform PaaS untuk praktik ini. Ketersediaan paket gratis dan batas penggunaannya mengikuti kebijakan Render yang berlaku.</div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div class="section-icon">💻</div>
+          <div><h2>Contoh Kode Aplikasi</h2><p>Contoh halaman sederhana untuk ditampilkan saat aplikasi berhasil di-deploy.</p></div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>index.html</span><button class="copy-btn" type="button" onclick="copyCode()">Salin kode</button></div>
+          <pre><code id="htmlCode">&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Praktikum Cloud Computing&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World!&lt;/h1&gt;
+  &lt;p&gt;Aplikasi PaaS berhasil dijalankan.&lt;/p&gt;
+  &lt;p&gt;Kelompok: Santi, Desi, dan Annisa&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="card" id="kelompok">
+        <div class="section-heading">
+          <div class="section-icon">👥</div>
+          <div><h2>Anggota Kelompok</h2><p>Tim praktikum Cloud Computing.</p></div>
+        </div>
+        <div class="team">
+          <div class="member"><div class="avatar">S</div><div><strong>Santi</strong><span>Anggota Kelompok</span></div></div>
+          <div class="member"><div class="avatar">D</div><div><strong>Desi</strong><span>Anggota Kelompok</span></div></div>
+          <div class="member"><div class="avatar">A</div><div><strong>Annisa</strong><span>Anggota Kelompok</span></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>Praktikum Cloud Computing · Platform as a Service (PaaS) · Kelompok Santi, Desi, dan Annisa</footer>
+
+  <script>
+    function copyCode() {
+      const code = document.getElementById('htmlCode').innerText;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(() => alert('Kode HTML berhasil disalin!')).catch(() => fallbackCopy(code));
+      } else {
+        fallbackCopy(code);
+      }
+    }
+    function fallbackCopy(text) {
+      const area = document.createElement('textarea');
+      area.value = text;
+      document.body.appendChild(area);
+      area.select();
+      try { document.execCommand('copy'); alert('Kode HTML berhasil disalin!'); }
+      catch (e) { alert('Silakan salin kode secara manual.'); }
+      area.remove();
+    }
+  </script>
+</body>
+</html>
