@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Praktikum Cloud Computing - PaaS</title>
+    <!-- Tailwind CSS CDN untuk styling modern dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-slate-100 min-h-screen">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-indigo-500/20 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-cloud-arrow-up text-white text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg tracking-wide text-white">Cloud Computing Practicum</h1>
+                    <p class="text-xs text-indigo-300">Platform as a Service (PaaS) Module</p>
+                </div>
+            </div>
+            <!-- Kelompok Badge -->
+            <div class="bg-indigo-900/40 border border-indigo-500/30 px-4 py-2 rounded-full flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-users text-indigo-400"></i>
+                <span class="text-slate-300 font-medium">Kelompok:</span>
+                <span class="text-indigo-200 font-bold">Santi, Desi, Annisa</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-10 space-y-12">
+
+        <!-- Hero / Intro Section -->
+        <section class="bg-gradient-to-r from-indigo-900/55 to-slate-900/60 border border-indigo-500/20 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 max-w-3xl space-y-4">
+                <span class="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Modus Praktikum PaaS</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Deployment Aplikasi Berbasis Platform as a Service</h2>
+                <p class="text-slate-300 text-base leading-relaxed">
+                    Praktikum ini membahas penerapan arsitektur komputasi awan menggunakan model PaaS (seperti Heroku, Vercel, atau Railway). Memungkinkan pengembang fokus penuh pada kode aplikasi tanpa perlu repot mengelola infrastruktur server di bawahnya.
+                </p>
+            </div>
+        </section>
+
+        <!-- Anggota Kelompok Card Grid -->
+        <section>
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-id-badge text-indigo-400"></i> Anggota Kelompok
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Anggota 1: Santi -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-xl p-6 hover:border-indigo-500/50 transition-all duration-300 shadow-lg group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-pink-500 to-indigo-600 flex items-center justify-center font-bold text-lg text-white shadow-md">
+                            S
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-white group-hover:text-indigo-400 transition-colors">Santi</h4>
+                            <p class="text-xs text-slate-400">Backend & Configuration</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-300">Bertanggung jawab atas konfigurasi environment, setup database, serta pengaturan file deployment PaaS.</p>
+                </div>
+
+                <!-- Anggota 2: Desi -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-xl p-6 hover:border-indigo-500/50 transition-all duration-300 shadow-lg group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-500 to-cyan-500 flex items-center justify-center font-bold text-lg text-white shadow-md">
+                            D
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-white group-hover:text-indigo-400 transition-colors">Desi</h4>
+                            <p class="text-xs text-slate-400">Frontend & UI/UX</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-300">Menangani antarmuka pengguna, styling antarmuka web, serta integrasi halaman dashboard praktikum.</p>
+                </div>
+
+                <!-- Anggota 3: Annisa -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-xl p-6 hover:border-indigo-500/50 transition-all duration-300 shadow-lg group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center font-bold text-lg text-white shadow-md">
+                            A
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-white group-hover:text-indigo-400 transition-colors">Annisa</h4>
+                            <p class="text-xs text-slate-400">Testing & Documentation</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-300">Melakukan uji coba deployment, validasi fungsi endpoint aplikasi, serta penyusunan laporan hasil praktikum.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Langkah-langkah Praktikum PaaS -->
+        <section class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8">
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-list-check text-indigo-400"></i> Tahapan Praktikum PaaS
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl space-y-3">
+                    <div class="text-indigo-400 font-bold text-sm">LANGKAH 01</div>
+                    <h4 class="font-semibold text-white">Persiapan Kode</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Menyiapkan repositori lokal, struktur folder proyek, dan file dependensi aplikasi.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl space-y-3">
+                    <div class="text-indigo-400 font-bold text-sm">LANGKAH 02</div>
+                    <h4 class="font-semibold text-white">Koneksi Platform</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Menghubungkan Git repository (GitHub/GitLab) dengan layanan PaaS pilihan.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl space-y-3">
+                    <div class="text-indigo-400 font-bold text-sm">LANGKAH 03</div>
+                    <h4 class="font-semibold text-white">Environment & Build</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Mengatur variabel lingkungan (env variables) dan menjalankan proses build otomatis.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl space-y-3">
+                    <div class="text-indigo-400 font-bold text-sm">LANGKAH 04</div>
+                    <h4 class="font-semibold text-white">Live Deployment</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Aplikasi sukses mengudara dan dapat diakses publik melalui domain cloud PaaS.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 mt-20 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Cloud Computing Practicum Module. Dibuat dengan bangga oleh Kelompok Santi, Desi, Annisa.</p>
+    </footer>
+
+</body>
+</html>
